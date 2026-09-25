@@ -1,0 +1,21 @@
+# Generated Flex/Bison files
+lex.yy.c
+y.tab.c
+y.tab.h
+y.output
+
+# Compiled artifacts
+*.o
+*.obj
+*.exe
+*.out
+
+# Submission archives and temporary verification files
+*.zip
+**/tmp/
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

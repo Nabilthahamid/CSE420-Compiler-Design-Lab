@@ -1,0 +1,32 @@
+Progress Report
+
+Student ID: 22301651
+Course: CSE420 Compiler Design
+Experiment: Constructing a Lexical Analyzer and Syntax Analyzer
+
+I have completed the main implementation of the lexical analyzer and syntax analyzer. 
+
+Work completed:
+- Created the Flex file 22301651.l for identifying keywords, identifiers, constants, operators, punctuators, whitespace, and newlines.
+- Connected the lexer with the parser using yylval and symbol_info pointers.
+- Created the Yacc file 22301651.y using the provided grammar.
+- Implemented grammar rules for programs, variable declarations, function definitions, parameter lists, compound statements, statements, expressions, variables, factors, and arguments.
+- Added logging for every token found by the lexer.
+- Added logging for every matched grammar rule in the parser.
+- Added line counting using line_num.
+- Handled the dangling-else ambiguity using precedence rules so the parser compiles with zero conflicts.
+- Used symbol_info objects to pass and combine source-code fragments between grammar rules.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

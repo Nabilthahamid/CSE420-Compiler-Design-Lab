@@ -1,0 +1,103 @@
+Line no 1: Token <VOID> Lexeme void found
+
+At line no: 1 type_specifier : VOID 
+
+void
+
+Line no 1: Token <ID> Lexeme f found
+
+Line no 1: Token <LPAREN> Lexeme ( found
+
+Line no 1: Token <RPAREN> Lexeme ) found
+
+Line no 2: Token <LCURL> Lexeme { found
+
+Line no 3: Token <INT> Lexeme int found
+
+At line no: 3 type_specifier : INT 
+
+int
+
+Line no 3: Token <ID> Lexeme integer found
+
+Line no 3: Token <SEMICOLON> Lexeme ; found
+
+At line no: 3 declaration_list : ID 
+
+integer
+
+At line no: 3 variable_decl : type_specifier declaration_list SEMICOLON 
+
+int integer;
+
+At line no: 3 statement : variable_decl 
+
+int integer;
+
+At line no: 3 statements : statement 
+
+int integer;
+
+Line no 4: Token <INT> Lexeme int found
+
+At line no: 4 type_specifier : INT 
+
+int
+
+Line no 4: Token <ID> Lexeme x found
+
+Line no 4: Token <SEMICOLON> Lexeme ; found
+
+At line no: 4 declaration_list : ID 
+
+x
+
+At line no: 4 variable_decl : type_specifier declaration_list SEMICOLON 
+
+int x;
+
+At line no: 4 statement : variable_decl 
+
+int x;
+
+At line no: 4 statements : statements statement 
+
+int integer;
+int x;
+
+Line no 5: Token <RCURL> Lexeme } found
+
+At line no: 5 compound_statement : LCURL statements RCURL 
+
+{
+int integer;
+int x;
+}
+
+At line no: 5 func_definition : type_specifier ID LPAREN RPAREN compound_statement 
+
+void f()
+{
+int integer;
+int x;
+}
+
+At line no: 5 unit : func_definition 
+
+void f()
+{
+int integer;
+int x;
+}
+
+At line no: 5 program : unit 
+
+void f()
+{
+int integer;
+int x;
+}
+
+At line no: 6 start : program 
+
+Total lines: 6

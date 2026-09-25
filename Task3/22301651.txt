@@ -1,0 +1,146 @@
+DETAILED PROGRESS REPORT
+========================
+
+Student ID: 22301651
+Course/Lab: CSE420 - Lab 03
+Project: Syntax and Semantic Analysis using Flex and Bison
+
+1. OVERALL PROGRESS
+-------------------
+I have completed the main implementation of the lexical analyzer, parser, symbol
+table, scope management system, and semantic error checker for this task. The
+Flex scanner and Bison parser have been connected successfully, and the parser
+can process C-like source programs, build and maintain nested scopes, record
+identifiers, verify their use, and generate detailed log and error files.
+
+2. LEXICAL ANALYZER
+-------------------
+I completed the lexical analyzer in the file 22301651.l. It recognizes the
+language tokens required by the grammar, including:
+
+* Keywords such as int, float, void, if, else, for, while, return, and println.
+* Identifiers, integer constants, and floating-point constants.
+* Arithmetic, relational, logical, assignment, increment, and decrement
+  operators.
+* Parentheses, braces, square brackets, commas, and semicolons.
+
+The scanner passes token information and line-number information to the Bison
+parser. This allows syntax rules and semantic errors to be reported with the
+correct source-code line numbers.
+
+3. PARSER AND GRAMMAR
+---------------------
+I completed the grammar and semantic actions in 22301651.y. The parser supports
+the important constructs of the assigned C-like language, including:
+
+* Global and local variable declarations.
+* Scalar variables and array declarations.
+* Function definitions and parameter lists.
+* Compound statements and nested blocks.
+* Expression statements and assignment expressions.
+* Arithmetic, relational, and logical expressions.
+* Unary expressions and function calls.
+* Control-flow statements such as if-else, for, and while.
+* Return and print statements.
+
+The grammar writes the recognized productions and reconstructed source fragments
+to a log file. It also counts the processed source lines and reports the total
+number of detected errors.
+
+4. SYMBOL INFORMATION AND SYMBOL TABLE
+--------------------------------------
+I implemented the supporting symbol-table components in symbol_info.h,
+scope_table.h, and symbol_table.h.
+
+The symbol information structure stores the details required during semantic
+analysis, including an identifier's name, token type, data type, symbol kind,
+array size, and function parameter information.
+
+Each scope table uses a hash table with separate chaining. The implementation
+supports insertion, lookup, and removal of symbols in a scope. It rejects a
+second declaration of the same identifier in the current scope and can print
+the stored variables, arrays, and functions with their relevant details.
+
+The main symbol table maintains a chain of nested scopes. A new scope is created
+when the parser enters a compound statement, and that scope is removed when the
+block ends. Identifier lookup begins in the current scope and continues through
+the parent scopes, which provides the required lexical scoping behavior.
+
+5. SEMANTIC ANALYSIS COMPLETED
+------------------------------
+I added semantic checks for the following cases:
+
+* Multiple declarations of variables in the same scope.
+* Duplicate parameter names in a function definition.
+* Multiple declarations or definitions of a function.
+* Variables declared with the invalid void type.
+* Use of undeclared variables.
+* Calls to undeclared functions.
+* Use of an array without an index where a scalar value is required.
+* Indexing a scalar variable as if it were an array.
+* Array indices that are not of integer type.
+* Incorrect numbers of arguments in function calls.
+* Argument data types that do not match function parameter types.
+* Type propagation through variables and expressions so that later checks can
+  use the calculated expression type.
+
+Error messages contain the line number and a description of the problem. The
+total error count is printed at the end of each generated error file.
+
+6. BUILD AND EXECUTION SUPPORT
+------------------------------
+I prepared script.sh to automate the complete build and execution process. The
+script performs these steps:
+
+1. Generates the parser source and header files with Bison/Yacc.
+2. Compiles the generated parser.
+3. Generates the scanner source with Flex.
+4. Compiles the scanner.
+5. Links both object files into the executable 22301651.out.
+6. Runs the executable with input.c, or with a supplied input filename.
+7. Displays the generated log and error files.
+
+This script makes it possible to rebuild and test the project consistently with
+a single command in the expected Linux environment.
+
+7. TESTING AND CURRENT RESULTS
+------------------------------
+I added test programs and their generated outputs inside the input_output_file
+directory. The larger test case exercises function definitions, duplicate
+declarations, arrays, function calls, argument checking, and undeclared
+identifiers. The parser completed this input and reported 25 semantic errors.
+
+The second test case focuses on duplicate variables, invalid array indexing,
+incorrect array usage, function argument mismatch, and an undeclared variable.
+It completed successfully and reported 6 semantic errors.
+
+The current input.c file is also a valid sample program. It defines a sum
+function, declares scalar and array variables, calls the function, assigns an
+array element, performs a floating-point calculation, prints a result, and
+returns from main. This provides a compact test of the normal successful path.
+
+The generated test artifacts currently include:
+
+* input1.c and input2.c - semantic-error test programs.
+* log1.txt - a detailed parser and symbol-table log.
+* error1.txt - 25 reported errors from the larger test program.
+* error2.txt - 6 reported errors from the smaller test program.
+
+8. CURRENT STATUS AND REMAINING WORK
+------------------------------------
+The core requirements are implemented, and the supplied test inputs can be
+parsed with meaningful semantic diagnostics. The project files have also been
+packaged in 22301651.zip for submission.
+
+Before final submission, the remaining work is mainly verification: rebuild the
+project in the exact grading environment, run all supplied and additional edge
+cases, confirm that log formatting exactly matches the required specification,
+and update the ZIP archive if any final corrections are made. Useful additional
+tests include deeply nested scopes, zero-parameter functions, invalid return
+types, mixed numeric expressions, and more combinations of array and function
+errors.
+
+In summary, the lexer-parser integration, scoped symbol table, semantic checking,
+automated build script, sample inputs, generated outputs, and submission archive
+have all been prepared. The implementation is now in the final testing and
+format-verification stage.
